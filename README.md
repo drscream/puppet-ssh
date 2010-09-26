@@ -4,7 +4,7 @@
 
 This class installs openssh.  
 
-** Only tested on CentOS/RHEL5.  **  
+** Only tested on CentOS & Ubuntu  **  
 
 ### Parameters:  
 	-	$permitrootlogin =  
