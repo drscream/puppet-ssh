@@ -28,7 +28,7 @@ class ssh {
 	name => $operatingsystem ? {
 	  Ubuntu => "ssh",
 	  centos => "sshd"
-	}
+	},
     ensure => running,
     enable => true
   }
