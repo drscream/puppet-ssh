@@ -2,13 +2,10 @@
 #
 # This class installs openssh.
 #
-# ** Only tested on CentOS/RHEL5.  **
+# ** Only tested on CentOS & Ubuntu  **
 #
 # Parameters:
-#    -   $permitrootlogin = 
-#                            'without-password'
-#                            'no'
-#                            'yes'
+#    -   $permitrootlogin = 'without-password' | 'no' | 'yes'
 #
 # Actions:  
 #	Ensures that the openssh package is installed and distributes a config file.  ``/etc/ssh/sshd_config``                            
@@ -17,6 +14,7 @@
 #	Package["openssh"]  
 #
 # ``assumes package was installed via kickstart``
+#
 class ssh {
   $permitrootlogin = 'without-password'
 
@@ -26,7 +24,11 @@ class ssh {
     mode    => 400
   }
 
-  service { "sshd" :
+  service { "sshd":
+	name => $operatingsystem ? {
+	  Ubuntu => "ssh",
+	  centos => "sshd"
+	}
     ensure => running,
     enable => true
   }
