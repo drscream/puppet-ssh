@@ -21,12 +21,15 @@ class ssh($permitrootlogin='no') {
     content => template('ssh/sshd_config.erb'),
     mode    => '0400',
     notify  => Service['sshd'],
-    require => Package['openssh'],
+    require => Package['openssh-server'],
   }
 
-  service { 'sshd':
-    ensure => running,
-    enable => true,
-    require => File['/etc/ssh/sshd_config'],
+  service {'sshd':
+    name	=> 'ssh',
+    ensure	=> running,
+    enable	=> true,
+    hasstatus	=> true,
+    hasrestart	=> true,
+    require	=> File['/etc/ssh/sshd_config'],
   }
 }
