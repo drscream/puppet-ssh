@@ -3,7 +3,7 @@
 # This class installs openssh.
 #
 # Parameters:
-#    -   $permitrootlogin = ('without-password'|'no'|'yes')
+#    -   $permitRootLogin = ('without-password'|'no'|'yes')
 #
 # Actions:  
 #	Ensures that the openssh package is installed and distributes a config file.  ``/etc/ssh/sshd_config``                            
@@ -11,7 +11,7 @@
 # Requires:  
 #	Package["openssh"]  
 #
-class ssh($permitrootlogin='no') {
+class ssh($permitRootLogin='no', $port='22' ) {
 
   package {'openssh-server':
     ensure => present
