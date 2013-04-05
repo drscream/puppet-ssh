@@ -1,5 +1,5 @@
 Port <%= port %>
-Port 22
+#Port 22
 Protocol 2
 #AddressFamily any
 #ListenAddress 0.0.0.0
@@ -45,7 +45,7 @@ IgnoreUserKnownHosts no
 IgnoreRhosts yes
 
 # To enable empty passwords, change to yes (NOT RECOMMENDED)
-PasswordAuthentication no
+PasswordAuthentication <%= passwordAuthentication %>
 PermitEmptyPasswords no
 
 # Change to no to disable s/key passwords
